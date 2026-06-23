@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoom → Markdown</title>
+  <style>
+    :root { --ink:#1a1a1a; --muted:#5a5c60; --line:#e4e4e7; --brand:#0b5cff; --bg:#fafafa; }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+           color: var(--ink); background: var(--bg); margin: 0; line-height: 1.55; }
+    main { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-size: 28px; margin: 0 0 4px; }
+    .sub { color: var(--muted); margin: 0 0 32px; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 24px; margin: 20px 0; }
+    .bm { display: inline-block; background: var(--brand); color: #fff !important; text-decoration: none;
+          font-weight: 600; padding: 12px 22px; border-radius: 10px; cursor: grab;
+          box-shadow: 0 1px 2px rgba(24,24,28,.08), 0 4px 10px -4px rgba(11,92,255,.4); }
+    .bm:active { cursor: grabbing; }
+    ol, ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+    code { background: #f1f1f3; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+    h2 { font-size: 17px; margin: 28px 0 8px; }
+    textarea { width: 100%; height: 120px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+               font-size: 11px; border: 1px solid var(--line); border-radius: 8px; padding: 10px;
+               resize: vertical; color: var(--muted); }
+    .note { color: var(--muted); font-size: 14px; }
+    .tag { display:inline-block; font-size:12px; color:var(--muted); border:1px solid var(--line);
+           border-radius:999px; padding:2px 10px; margin-bottom:16px; }
+  </style>
+</head>
+<body>
+<main>
+  <span class="tag">Tyton · internal tool</span>
+  <h1>Zoom → Markdown</h1>
+  <p class="sub">One-click export of a Zoom Docs meeting transcript to a clean Markdown file, named after the meeting. Runs entirely in your browser — nothing is uploaded.</p>
+
+  <div class="card">
+    <p style="margin-top:0"><strong>1. Install it.</strong> Drag this button up to your bookmarks bar:</p>
+    <p style="margin:18px 0">
+      <a class="bm" href="javascript:(function()%7Bvar t=%5B%5D;document.querySelectorAll('span%5Brole=%22img%22%5D%5Baria-label%5D').forEach(function(a)%7Bvar name=a.getAttribute('aria-label');var header=a.parentElement;if(!header)return;var turn=header.parentElement;if(!turn)return;var time='';header.querySelectorAll('span').forEach(function(s)%7Bif(/%5E%5Cd%7B2%7D:%5Cd%7B2%7D:%5Cd%7B2%7D$/.test(s.textContent.trim()))time=s.textContent.trim();%7D);var msgs=%5B%5D;Array.prototype.forEach.call(turn.children,function(c)%7Bif(c===header)return;var x=c.textContent.trim();if(x)msgs.push(x);%7D);if(!msgs.length)return;t.push('**'+name+'**'+(time?%27 %5B%27+time+%27%5D%27:%27%27)+%27%5Cn%27+msgs.join(%27 %27));%7D);if(!t.length)%7Balert(%27No transcript turns found. Make sure the Zoom transcript is fully loaded on screen.%27);return;%7Dvar md=%27%23 Transcript%5Cn%5Cn%27+t.join(%27%5Cn%5Cn%27)+%27%5Cn%27;var blob=new Blob(%5Bmd%5D,%7Btype:%27text/markdown%27%7D);var url=URL.createObjectURL(blob);var te=document.getElementById(%27docs-title%27);var fn=((te?te.textContent:document.title)%7C%7C%27transcript%27).replace(/%5B%5C%5C/:*?%22%3C%3E%7C%5D/g,%27%27).replace(/%5Cs+/g,%27 %27).trim()%7C%7C%27transcript%27;var d=document.createElement(%27a%27);d.href=url;d.download=fn+%27.md%27;document.body.appendChild(d);d.click();d.remove();URL.revokeObjectURL(url);%7D)();">📝 Zoom → Markdown</a>
+    </p>
+    <p class="note" style="margin-bottom:0">Don't see your bookmarks bar? Press <code>⌘⇧B</code> (Mac) / <code>Ctrl+Shift+B</code> (Windows) to show it.</p>
+  </div>
+
+  <div class="card">
+    <p style="margin-top:0"><strong>2. Use it.</strong></p>
+    <ol style="margin-bottom:0">
+      <li>Open a meeting's transcript in Zoom Docs (<code>docs.zoom.us</code>).</li>
+      <li>Scroll the transcript once so it's fully rendered.</li>
+      <li>Click the <strong>Zoom → Markdown</strong> bookmark.</li>
+      <li>A <code>&lt;meeting title&gt;.md</code> file downloads. Done.</li>
+    </ol>
+  </div>
+
+  <h2>Manual install (if dragging doesn't work)</h2>
+  <p class="note">Right-click the bookmarks bar → <em>Add page</em> → name it <strong>Zoom → Markdown</strong> → paste this into the URL field → Save:</p>
+  <textarea readonly onclick="this.select()">javascript:(function()%7Bvar t=%5B%5D;document.querySelectorAll('span%5Brole=%22img%22%5D%5Baria-label%5D').forEach(function(a)%7Bvar name=a.getAttribute('aria-label');var header=a.parentElement;if(!header)return;var turn=header.parentElement;if(!turn)return;var time='';header.querySelectorAll('span').forEach(function(s)%7Bif(/%5E%5Cd%7B2%7D:%5Cd%7B2%7D:%5Cd%7B2%7D$/.test(s.textContent.trim()))time=s.textContent.trim();%7D);var msgs=%5B%5D;Array.prototype.forEach.call(turn.children,function(c)%7Bif(c===header)return;var x=c.textContent.trim();if(x)msgs.push(x);%7D);if(!msgs.length)return;t.push('**'+name+'**'+(time?%27 %5B%27+time+%27%5D%27:%27%27)+%27%5Cn%27+msgs.join(%27 %27));%7D);if(!t.length)%7Balert(%27No transcript turns found. Make sure the Zoom transcript is fully loaded on screen.%27);return;%7Dvar md=%27%23 Transcript%5Cn%5Cn%27+t.join(%27%5Cn%5Cn%27)+%27%5Cn%27;var blob=new Blob(%5Bmd%5D,%7Btype:%27text/markdown%27%7D);var url=URL.createObjectURL(blob);var te=document.getElementById(%27docs-title%27);var fn=((te?te.textContent:document.title)%7C%7C%27transcript%27).replace(/%5B%5C%5C/:*?%22%3C%3E%7C%5D/g,%27%27).replace(/%5Cs+/g,%27 %27).trim()%7C%7C%27transcript%27;var d=document.createElement(%27a%27);d.href=url;d.download=fn+%27.md%27;document.body.appendChild(d);d.click();d.remove();URL.revokeObjectURL(url);%7D)();</textarea>
+
+  <p class="note" style="margin-top:32px">Works in Chrome, Edge, and Safari. Nothing leaves your browser — the transcript is read from the page and saved straight to your downloads. Treat exported files as the confidential deal material they are.</p>
+</main>
+</body>
+</html>
