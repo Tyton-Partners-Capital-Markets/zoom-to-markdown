@@ -9,9 +9,8 @@ Open the [install page](https://tyton-partners-capital-markets.github.io/zoom-to
 ## Use
 
 1. Open a meeting's transcript in Zoom Docs (`docs.zoom.us`).
-2. Scroll the transcript once so it fully renders.
-3. Click the **Zoom → Markdown** bookmark.
-4. A `<meeting title>.md` file downloads.
+2. Click the **Zoom → Markdown** bookmark.
+3. A `<meeting title>.md` file downloads.
 
 ## How it works
 
